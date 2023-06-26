@@ -58,8 +58,9 @@ function runProgram(input) {
     bucketOfWater(n, water, buckets) ? console.log("YES") : console.log("NO");
   }
 }
+
+//using inbuilt sort O(NlogN)
 function bucketOfWater(n, water, buckets) {
-  // console.log(n,water,buckets)
   let totalWater = 0;
   for (let i = 0; i < water.length; i++) {
     totalWater += water[i];
@@ -75,6 +76,33 @@ function bucketOfWater(n, water, buckets) {
     return false;
   }
 }
+//without inbuilt sort O(N);
+function bucketOfWater(n, water, buckets) {
+  let totalWater = 0;
+  for (let i = 0; i < water.length; i++) {
+    totalWater += water[i];
+  }
+  //without sort
+  let first = -Infinity;
+  let second = -Infinity;
+  for (let i = 0; i < buckets.length; i++) {
+    if (buckets[i] > first) {
+      first = buckets[i];
+    }
+  }
+  for (let i = 0; i < buckets.length; i++) {
+    if (buckets[i] > second && buckets[i] !== first) {
+      second = buckets[i];
+    }
+  }
+  let cap = first + second;
+  if (cap >= totalWater) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 if (process.env.USER === "") {
   runProgram(``);
 } else {
