@@ -30,3 +30,14 @@
 // Sample Output 1
 
 // Yes
+
+function permutation(str1, str2) {
+  //write code here
+  str1 = str1.split("").sort().join("");
+  str2 = str2.split("").sort().join("");
+  if (str1 === str2) {
+    console.log("Yes");
+  } else {
+    console.log("No");
+  }
+}
