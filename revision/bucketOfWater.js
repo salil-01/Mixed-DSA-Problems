@@ -45,3 +45,53 @@
 // TestCase 1:There are already 2 buckets, so the answer is "YES".
 
 // TestCase 2:We cannot pour all the water into two buckets. answer is "NO".
+
+function runProgram(input) {
+  // Write code here
+  input = input.trim().split("\n");
+  let tc = +input[0].trim();
+  let line = 1;
+  for (let i = 0; i < tc; i++) {
+    let n = +input[line++].trim();
+    let water = input[line++].trim().split(" ").map(Number);
+    let buckets = input[line++].trim().split(" ").map(Number);
+    bucketOfWater(n, water, buckets) ? console.log("YES") : console.log("NO");
+  }
+}
+function bucketOfWater(n, water, buckets) {
+  // console.log(n,water,buckets)
+  let totalWater = 0;
+  for (let i = 0; i < water.length; i++) {
+    totalWater += water[i];
+  }
+
+  buckets = buckets.sort((a, b) => b - a);
+
+  let cap = buckets[0] + buckets[1];
+
+  if (cap >= totalWater) {
+    return true;
+  } else {
+    return false;
+  }
+}
+if (process.env.USER === "") {
+  runProgram(``);
+} else {
+  process.stdin.resume();
+  process.stdin.setEncoding("ascii");
+  let read = "";
+  process.stdin.on("data", function (input) {
+    read += input;
+  });
+  process.stdin.on("end", function () {
+    read = read.replace(/\n$/, "");
+    read = read.replace(/\n$/, "");
+    runProgram(read);
+  });
+  process.on("SIGINT", function () {
+    read = read.replace(/\n$/, "");
+    runProgram(read);
+    process.exit(0);
+  });
+}
