@@ -50,3 +50,47 @@
 // The count of a's in the string is less than 'a' , so there will not be any sub-string which starts at 'a' and ends at 'a'as well, Output will be 0
 
 // Note:if the count of a's in the string is one then the output will be 0 as there is no sub-string which starts at 'a' and ends at 'a'
+
+function runProgram(input) {
+  // Write code here
+  input = input.trim().split("\n");
+  let n = +input[0].trim();
+  let str = input[1].trim();
+  console.log(nobita(n, str));
+}
+function nobita(n, str) {
+  // console.log(n,str)
+  let max = 0;
+  for (let i = 0; i < str.length; i++) {
+    let temp = [];
+    for (let j = i; j < str.length; j++) {
+      temp.push(str[j]);
+      if (temp.length > 1) {
+        if (temp[0] == "a" && temp[temp.length - 1] == "a") {
+          max = Math.max(temp.length, max);
+        }
+      }
+    }
+  }
+  return max;
+}
+if (process.env.USER === "") {
+  runProgram(``);
+} else {
+  process.stdin.resume();
+  process.stdin.setEncoding("ascii");
+  let read = "";
+  process.stdin.on("data", function (input) {
+    read += input;
+  });
+  process.stdin.on("end", function () {
+    read = read.replace(/\n$/, "");
+    read = read.replace(/\n$/, "");
+    runProgram(read);
+  });
+  process.on("SIGINT", function () {
+    read = read.replace(/\n$/, "");
+    runProgram(read);
+    process.exit(0);
+  });
+}
