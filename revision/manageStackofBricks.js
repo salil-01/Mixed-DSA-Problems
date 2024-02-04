@@ -36,52 +36,54 @@
 
 // 10
 
+//Enter code here
 function runProgram(input) {
-  // Write code here
+  // write code here
   input = input.trim().split("\n");
-  let tc = +input[0].trim();
+  let tc = input[0].trim();
   let line = 1;
   for (let i = 0; i < tc; i++) {
     let n = +input[line++].trim();
     let x = +input[line++].trim();
     let y = +input[line++].trim();
-    let arr1 = [];
-    let arr2 = [];
+    let initialArr = [];
+    let finalArr = [];
     for (let j = 0; j < n; j++) {
-      let [a, b] = input[line++].trim().split(" ").map(Number);
-      arr1.push(a);
-      arr2.push(b);
+      // inner loop to push initial and final in two diff arrays
+      let [a, b] = input[line++].split(" ").map(Number);
+      initialArr.push(a);
+      finalArr.push(b);
     }
-    //   console.log(arr1,arr2)
-    managestacksofbricks(n, x, y, arr1, arr2);
+    manageStackOfBricks(n, x, y, initialArr, finalArr);
   }
 }
-function managestacksofbricks(n, x, y, arr1, arr2) {
-  arr1 = arr1.sort(function (a, b) {
-    return a - b;
-  });
-  arr2 = arr2.sort(function (a, b) {
-    return a - b;
-  });
-  //  console.log(n,x,y,arr1,arr2);
-  let total = 0;
+function manageStackOfBricks(n, x, y, initialArr, finalArr) {
+  // console.log(n,x,y,initialArr,finalArr);
+  // x = effort to put brick
+  // y = effort to remove a brick
+
+  // sorting as we can reorder as we want
+  initialArr = initialArr.sort((a, b) => a - b);
+  finalArr = finalArr.sort((a, b) => a - b);
+  let minimum = 0;
   for (let i = 0; i < n; i++) {
-    if (arr1[i] == arr2[i]) {
+    // when both items are equal
+    if (initialArr[i] === finalArr[i]) {
       continue;
     }
-    if (arr1[i] < arr2[i]) {
-      let diff = arr2[i] - arr1[i];
-      // console.log(diff)
-      total += diff * x;
-    }
-    if (arr1[i] > arr2[i]) {
-      let diff = arr1[i] - arr2[i];
-      //   console.log(diff)
-      total += diff * y;
+    if (initialArr[i] < finalArr[i]) {
+      // putting brick
+      let numberOfBricks = finalArr[i] - initialArr[i];
+      minimum = minimum + x * numberOfBricks;
+    } else if (initialArr[i] > finalArr[i]) {
+      // removing bricks
+      let numberOfBricks = initialArr[i] - finalArr[i];
+      minimum = minimum + y * numberOfBricks;
     }
   }
-  console.log(total);
+  console.log(minimum);
 }
+
 if (process.env.USER === "") {
   runProgram(``);
 } else {
