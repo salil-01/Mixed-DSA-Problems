@@ -10,7 +10,6 @@
  * @return {ListNode}
  */
 var removeNodes = function(head) {
-    console.log(head)
     let curr = reverseLinkedList(head);
     let temp = curr;
     while(curr && curr.next){
