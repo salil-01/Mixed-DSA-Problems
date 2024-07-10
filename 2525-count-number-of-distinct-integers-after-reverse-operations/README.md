@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/count-number-of-distinct-integers-after-reverse-operations">2525. Count Number of Distinct Integers After Reverse Operations</a></h2><h3>Medium</h3><hr><p>You are given an array <code>nums</code> consisting of <strong>positive</strong> integers.</p>
+<h2><a href="https://leetcode.com/problems/count-number-of-distinct-integers-after-reverse-operations">Count Number of Distinct Integers After Reverse Operations</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given an array <code>nums</code> consisting of <strong>positive</strong> integers.</p>
 
 <p>You have to take each integer in the array, <strong>reverse its digits</strong>, and add it to the end of the array. You should apply this operation to the original integers in <code>nums</code>.</p>
 
