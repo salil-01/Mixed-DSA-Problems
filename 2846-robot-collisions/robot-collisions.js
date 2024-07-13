@@ -42,8 +42,9 @@ var survivedRobotsHealths = function (positions, healths, directions) {
     }
 
     stack = [];
-    for(let i=0; i<healths.length; i++){
-        if(healths[i]) stack.push(healths[i])
+    for (let i = 0; i < healths.length; i++) {
+        //removing zeroes
+        if (healths[i]) stack.push(healths[i])
     }
     // console.log(healths)
     return stack;
