@@ -31,7 +31,8 @@ var luckyNumbers = function (matrix) {
     let res = [];
     for (let i = 0; i < m; i++) {
         for (let j = 0; j < n; j++) {
-            if(matrix[i][j]=== rowMins[i] && matrix[i][j]===colMax[j]){
+            // checking if it's min in each row and ma in each col
+            if (matrix[i][j] === rowMins[i] && matrix[i][j] === colMax[j]) {
                 res.push(matrix[i][j])
             }
         }
