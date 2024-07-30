@@ -31,8 +31,6 @@ var reconstructMatrix = function (upper, lower, colsum) {
                 } else {
                     return []
                 }
-
-
             } else {
                 // put in lower 
                 matrix[1][j] = 1;
@@ -42,13 +40,10 @@ var reconstructMatrix = function (upper, lower, colsum) {
                     return []
                 }
             }
-
-
         } else if (colsum[j] === 2) {
             // we have to put 1 in both rows
             matrix[0][j] = 1;
             matrix[1][j] = 1;
-
             if (upper > 0 && lower > 0) {
                 upper--;
                 lower--;
@@ -64,7 +59,8 @@ var reconstructMatrix = function (upper, lower, colsum) {
 
     }
 
-    if(upper==0 && lower==0){
+    if (upper == 0 && lower == 0) {
+        //  checking if all the upper and lower sum are consumed or not
         return matrix
     }
     return [];
